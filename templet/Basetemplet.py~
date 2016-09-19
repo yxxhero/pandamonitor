@@ -1,0 +1,12 @@
+#!/usr/bin/env python2.7
+# _*_ coding:utf-8 _*_
+class basetemplet(object):
+    def __init__(self):
+        self.host_ip=''
+        self.group=''
+class linuxtemplet(basetemplet):
+    super(linuxtemplet,self).__init():
+        self.server=[]
+        self.trigger={'cpu_info':{
+
+            }}
