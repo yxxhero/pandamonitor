@@ -4,7 +4,6 @@ from utils import global_setting
 from templet import Basetemplet
 from utils import redishelper
 import time
-import pickle
 client_1=Basetemplet.linuxtemplet()
 client_1.host_ip='192.169.186.134'
 client_2=Basetemplet.linuxtemplet()
