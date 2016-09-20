@@ -17,7 +17,7 @@ for ip in group:
     server_list=[] 
     for client in client_group:
         if ip==client.host_ip:
-            server_list.append(client.server)
+            server_list.extend(client.server)
     print server_list[:]
 
 
