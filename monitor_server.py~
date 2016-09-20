@@ -4,6 +4,7 @@ from utils import global_setting
 from templet import Basetemplet
 from utils import redishelper
 import time
+import pickle
 client_1=Basetemplet.linuxtemplet()
 client_1.host_ip='192.169.186.134'
 client_2=Basetemplet.linuxtemplet()
@@ -13,12 +14,14 @@ client_3.host_ip='192.169.186.134'
 group=['192.169.186.134','192.169.186.135']
 client_group=[client_1,client_2,client_3]
 for ip in group:
-    client_config=ip+':monitor_config'
+    client_config='monitor_config:'+ip
     server_list=[] 
     for client in client_group:
         if ip==client.host_ip:
             server_list.extend(client.server)
-    print server_list[:]
+    config=pickle.dumps(server_list)
+    r=redishelper.redishelper()
+    r.set(client_config,config)
 
 
 
