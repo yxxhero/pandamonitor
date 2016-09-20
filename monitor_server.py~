@@ -24,7 +24,6 @@ for ip in group:
     r.set(client_config,config)
 pub=r.subscribe()
 while True:
-    monitor_result=pub.parse_response()
-    print pickle.loads(monitor_result[2])
+    print pub.parse_response()
 
 

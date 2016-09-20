@@ -16,6 +16,6 @@ class redishelper:
         self.redis_connect.publish(self.chan_pub,msg)
     def subscribe(self):
         pub=self.redis_connect.pubsub()
-        pub.subcribe(self.chan_sub)
+        pub.subscribe(self.chan_sub)
         pub.parse_response()
         return pub

@@ -9,8 +9,7 @@ import socket
 import threading
 def handle_data(server,data,rs):
     send_data={}
-    d={}
-    d[server]=data
+    d=server+"|"+str(data)
     send_data["status_monitor_result:192.168.18.133"]=d
     print send_data
     data=pickle.dumps(send_data)

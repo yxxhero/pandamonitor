@@ -10,7 +10,7 @@ class cpu_infomation:
     def get_info(self):
         cpu_result=commands.getoutput("top -bi -n 2|grep Cpu|grep -o '[[:space:]].*$'|awk 'NR==2{print}'").strip('\n').split(',')
         for item in cpu_result:
-            self.cpu_info[item.strip().split()[1]]=item.strip().split()[0]
+            self.cpu_info[item.strip().split('%')[1]]=item.strip().split('%')[0]
         return self.cpu_info
         
 class mem_infomation:
@@ -25,4 +25,8 @@ class mem_infomation:
                 if lines.strip('\n').split(':')[0] in ['MemTotal','MemFree','Buffers','Cached','MemAvailable']:
                     self.mem_info[lines.strip('\n').split(':')[0]]=lines.strip('\n').split(':')[1].strip()
             return self.mem_info
-    
+if __name__=='__main__':
+    c=cpu_infomation()
+    print c.get_info()
+    m=mem_infomation()
+    print m.get_info()
