@@ -13,7 +13,7 @@ class cpu_infomation:
             self.cpu_info[item.strip().split()[1]]=item.strip().split()[0]
         return self.cpu_info
         
-class mem_info:
+class mem_infomation:
     def __init__(self):
         self.mem_info={}
         self.plugin_name='mem_info'
