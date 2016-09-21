@@ -5,6 +5,14 @@ from templet import Basetemplet
 from utils import redishelper
 import time
 import pickle
+import threading
+def save_data_to_redis(m_data,redis_ins):
+    current_time=time.time()
+    monitor_ip=m_data.keys()[0]
+    print monitor_ip
+    redis_data=m_data.keys()[0]+':'+str(current_time)
+    redis_ins.set(redis_data,pickle.dumps(m_data[monitor_ip]))
+    print "save ok"
 client_1=Basetemplet.linuxtemplet()
 client_1.host_ip='192.168.86.135'
 client_2=Basetemplet.linuxtemplet()
@@ -25,6 +33,7 @@ for ip in group:
 pub=r.subscribe()
 while True:
     monitor_result=pub.parse_response()
-    print pickle.loads(monitor_result[2])
-
+    monitor_data=pickle.loads(monitor_result[2])
+    t=threading.Thread(target=save_data_to_redis,args=(monitor_data,r))
+    t.start() 
 
