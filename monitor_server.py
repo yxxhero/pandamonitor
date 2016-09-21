@@ -6,12 +6,12 @@ from utils import redishelper
 import time
 import pickle
 client_1=Basetemplet.linuxtemplet()
-client_1.host_ip='192.168.18.133'
+client_1.host_ip='192.168.186.135'
 client_2=Basetemplet.linuxtemplet()
-client_2.host_ip='192.168.18.135'
+client_2.host_ip='192.168.186.136'
 client_3=Basetemplet.unixtemplet()
-client_3.host_ip='192.168.18.133'
-group=['192.168.18.133','192.168.18.135']
+client_3.host_ip='192.168.186.135'
+group=['192.168.186.136','192.168.186.135']
 client_group=[client_1,client_2,client_3]
 for ip in group:
     client_config='monitor_config:'+ip

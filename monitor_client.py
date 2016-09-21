@@ -11,12 +11,12 @@ def handle_data(server,data,rs):
     send_data={}
     d={}
     d[server]=data
-    send_data["status_monitor_result:192.168.18.133"]=d
+    send_data["status_monitor_result:192.168.186.135"]=d
     print send_data
     data=pickle.dumps(send_data)
     rs.public(data)
 r=redishelper.redishelper()
-monitor_server=r.get("monitor_config:192.168.18.133")
+monitor_server=r.get("monitor_config:192.168.186.135")
 server_list=pickle.loads(monitor_server)
 print server_list
 server_last_time={}
