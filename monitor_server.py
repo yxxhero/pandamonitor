@@ -9,8 +9,10 @@ import threading
 def save_data_to_redis(m_data,redis_ins):
     current_time=time.time()
     monitor_ip=m_data.keys()[0]
+    monitor_value=m_data.values()[0]
+    monitor_item=monitor_value.keys()[0]
     print monitor_ip
-    redis_data=m_data.keys()[0]+':'+str(current_time)
+    redis_data=monitor_item+":"+m_data.keys()[0]+':'+str(current_time)
     redis_ins.set(redis_data,pickle.dumps(m_data[monitor_ip]))
     print "save ok"
 client_1=Basetemplet.linuxtemplet()
