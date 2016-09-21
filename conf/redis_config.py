@@ -1,1 +1,1 @@
-redis_args={'host':'192.168.18.133','port':6379}
+redis_args={'host':'127.0.0.1','port':6379}
